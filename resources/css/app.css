@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../**/*.vue';
+
+/* Brand tokens — taken from the Sakha logo (public/sakha.png) */
+@theme {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand-navy: #13206b;
+    --color-brand-navy-dark: #0c1550;
+    --color-brand-blue: #1a6af0;
+    --color-brand-green: #3cb42c;
+    --color-brand-orange: #f58220;
+    --color-brand-purple: #7b12e0;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-white font-sans text-slate-600;
+    }
+
+    h1, h2, h3, h4 {
+        @apply text-brand-navy;
+    }
+}
+
+@utility container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+}
+
+/* Thin multi-colour bar echoing the logo's bar chart */
+@utility brand-stripe {
+    background: linear-gradient(
+        90deg,
+        var(--color-brand-orange),
+        #ef2b4f,
+        var(--color-brand-purple),
+        var(--color-brand-blue),
+        var(--color-brand-green)
+    );
+}
