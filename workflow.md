@@ -29,6 +29,8 @@
 
 ## 3. Running the project
 
+**Repository:** https://github.com/imajayupadhyay/realstate-sak (branch `main`)
+
 ```bash
 composer install && npm install   # first time only
 composer run dev                  # Laravel server + Vite + queue + logs together
@@ -220,3 +222,4 @@ Contact Us `/contact-us`. Active page gets a blue label + brand-stripe underline
 | 2026-10-06 | Built Home page: brand theme from logo, Poppins font, shared AppLayout/Navbar/Footer, Home sections (hero carousel, featured projects, about, CTA). Added HomeController, `@` alias, site config & project data files, cropped logo and stock images. Created this workflow.md. |
 | 2026-10-06 | Added **About Us** page (`/about-us`) and **Contact Us** page (`/contact-us`) with working, validated enquiry form (not yet saved) and Google Map. Moved `SectionHeading` & `EnquiryCta` to shared `Components/`; added shared `PageHeader` and `NavLink`; navbar now links to real pages with active state; stats moved to `site.stats`; added `StoreEnquiryRequest`, `AboutController`, `ContactController`, flash sharing in `HandleInertiaRequests`. |
 | 2026-10-06 | Added **project detail template** (`Pages/Projects/Show.vue` + 8 section components) at `/projects/{slug}`, first project **ACE Arte** (researched dummy content + renders). Project data moved to backend: `resources/data/projects/*.php` + `ProjectRepository` + `ProjectController`, shared as `projects` prop. Navbar **Projects mega menu** (desktop panel + mobile accordion). Home FeaturedProjects now data-driven and links to project pages. `EnquiryForm`/`FormField` moved to shared Components (project pre-tagging). Removed `resources/js/data/projects.js`. `/projects` redirects to `/#projects`. |
+| 2026-10-06 | Initialised git, replaced default README with project README, pushed to GitHub `imajayupadhyay/realstate-sak` (`main`). |
