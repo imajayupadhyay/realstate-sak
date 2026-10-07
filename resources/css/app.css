@@ -16,6 +16,20 @@
     --color-brand-green: #3cb42c;
     --color-brand-orange: #f58220;
     --color-brand-purple: #7b12e0;
+
+    /* Infinite logo carousel (Home → PartnersCarousel). Track holds the list twice. */
+    --animate-marquee: marquee 35s linear infinite;
+
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+        animation: none;
+    }
 }
 
 @layer base {

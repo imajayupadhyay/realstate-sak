@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import HeroCarousel from './Components/HeroCarousel.vue';
 import FeaturedProjects from './Components/FeaturedProjects.vue';
+import PartnersCarousel from './Components/PartnersCarousel.vue';
 import AboutSection from './Components/AboutSection.vue';
 import EnquiryCta from '@/Components/EnquiryCta.vue';
 </script>
@@ -12,6 +13,7 @@ import EnquiryCta from '@/Components/EnquiryCta.vue';
     <AppLayout>
         <HeroCarousel />
         <FeaturedProjects />
+        <PartnersCarousel />
         <AboutSection />
         <EnquiryCta />
     </AppLayout>

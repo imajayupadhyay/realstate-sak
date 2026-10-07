@@ -61,7 +61,7 @@ resources/views/app.blade.php     # single Blade root (Poppins font, @vite, @ine
 resources/css/app.css             # Tailwind import + brand theme tokens + custom utilities
 resources/js/
     app.js                        # Inertia/Vue bootstrap
-    config/site.js                # company info, contact details, hours, map URL, stats, navigation menu
+    config/site.js                # company info, contact details, hours, map URL, stats, partners, navigation menu
     Layouts/
         AppLayout.vue             # Navbar + <main> slot + Footer (wrap every page in this)
     Components/                   # SHARED components used by more than one page
@@ -76,7 +76,7 @@ resources/js/
     Pages/
         Home/
             Index.vue
-            Components/           # HeroCarousel, FeaturedProjects, AboutSection
+            Components/           # HeroCarousel, FeaturedProjects, PartnersCarousel, AboutSection
         AboutUs/
             Index.vue
             Components/           # OurStory, MissionVision, OurServices, WhyChooseUs
@@ -93,6 +93,7 @@ public/
     images/hero/*.jpg             # carousel images
     images/projects/*.jpg         # project images
     images/projects/<slug>/*.webp # per-project images (ace-arte/: renders)
+    images/partners/*             # developer partner logos (Home logo carousel)
     images/pages/*.jpg            # inner-page images (skyline = About banner, office = Contact banner, team = About story)
     images/about.jpg
 ```
@@ -139,9 +140,15 @@ Sections, top to bottom:
 2. **HeroCarousel** — 3 full-height slides (Real Estate / Investment / Finance), fade + slow zoom, autoplay every 6s,
    pauses on hover, dots + prev/next arrows. Slides are defined at the top of the component.
 3. **FeaturedProjects** (`#projects`) — 3 project cards from `data/projects.js` with status badge, type and location.
-4. **AboutSection** (`#about`) — image, "Sakha means friend" intro, 3 service pillars, stats row.
-5. **EnquiryCta** — navy panel with Call / Email buttons.
-6. **Footer** (shared, `#contact`) — logo, quick links, contact details, copyright.
+4. **PartnersCarousel** (`#partners`) — "Our Partners / Trusted by leading developers": infinite logo marquee
+   (CSS `animate-marquee` defined in `app.css`, list rendered twice, 35s loop, pauses on hover, faded edges, stops for
+   `prefers-reduced-motion`). Logos show in their original colours (no greyscale). Partners list = `site.partners` in
+   `config/site.js` (`{ name, logo, dark? }`); `dark: true` puts a white logo on a navy card (used for Purvanchal).
+   **To add a partner:** drop the logo in `public/images/partners/` and add an entry to `site.partners`.
+   Current: Bhutani Infra, Godrej Properties, Sobha, Eldeco, Purvanchal Projects, ACE Group, Gaurs.
+5. **AboutSection** (`#about`) — image, "Sakha means friend" intro, 3 service pillars, stats row.
+6. **EnquiryCta** — navy panel with Call / Email buttons.
+7. **Footer** (shared, `#contact`) — logo, quick links, contact details, copyright.
 
 Home "More About Us" button → `/about-us`; hero "Talk to Us" and navbar "Enquire Now" → `/contact-us`.
 
@@ -212,6 +219,8 @@ Contact Us `/contact-us`. Active page gets a blue label + brand-stripe underline
       floor-plan images per configuration
 - [ ] Real stats (years, families, projects) → `site.stats` in `resources/js/config/site.js`
 - [ ] Replace stock photos (from Unsplash) in `public/images/` with real project photos
+- [ ] Partner logos were downloaded from each developer's website — confirm partnerships with the client, get
+      official/high-res logos (ACE logo is only 100×38 px), and confirm "Urvanchal Projects" = Purvanchal Projects
 - [x] Projects dropdown + individual project pages
 
 ## 8. Change Log
@@ -223,3 +232,5 @@ Contact Us `/contact-us`. Active page gets a blue label + brand-stripe underline
 | 2026-10-06 | Added **About Us** page (`/about-us`) and **Contact Us** page (`/contact-us`) with working, validated enquiry form (not yet saved) and Google Map. Moved `SectionHeading` & `EnquiryCta` to shared `Components/`; added shared `PageHeader` and `NavLink`; navbar now links to real pages with active state; stats moved to `site.stats`; added `StoreEnquiryRequest`, `AboutController`, `ContactController`, flash sharing in `HandleInertiaRequests`. |
 | 2026-10-06 | Added **project detail template** (`Pages/Projects/Show.vue` + 8 section components) at `/projects/{slug}`, first project **ACE Arte** (researched dummy content + renders). Project data moved to backend: `resources/data/projects/*.php` + `ProjectRepository` + `ProjectController`, shared as `projects` prop. Navbar **Projects mega menu** (desktop panel + mobile accordion). Home FeaturedProjects now data-driven and links to project pages. `EnquiryForm`/`FormField` moved to shared Components (project pre-tagging). Removed `resources/js/data/projects.js`. `/projects` redirects to `/#projects`. |
 | 2026-10-06 | Initialised git, replaced default README with project README, pushed to GitHub `imajayupadhyay/realstate-sak` (`main`). |
+| 2026-10-07 | Added **PartnersCarousel** to Home (after Featured properties): infinite logo marquee of developer partners (Bhutani, Godrej, Sobha, Eldeco, Purvanchal, ACE, Gaurs). Logos in `public/images/partners/` (Sobha wordmark recoloured dark), list in `site.partners`, `animate-marquee` keyframes added to `app.css`. |
+| 2026-10-07 | Partner logos now shown in original colours (removed greyscale/opacity hover effect); Purvanchal's white logo sits on a navy card (`dark` flag replaces `mono`). |

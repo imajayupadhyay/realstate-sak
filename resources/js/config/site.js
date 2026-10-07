@@ -20,6 +20,18 @@ export const site = {
         { value: '500+', label: 'Happy families' },
         { value: '25+', label: 'Projects delivered' },
     ],
+    // Developer partners shown in the Home logo carousel. Logos live in
+    // public/images/partners/. `dark: true` puts a white/light logo on a navy
+    // card so it keeps its original colours and stays visible.
+    partners: [
+        { name: 'Bhutani Infra', logo: '/images/partners/bhutani.png' },
+        { name: 'Godrej Properties', logo: '/images/partners/godrej.svg' },
+        { name: 'Sobha Realty', logo: '/images/partners/sobha.svg' },
+        { name: 'Eldeco', logo: '/images/partners/eldeco.png' },
+        { name: 'Purvanchal Projects', logo: '/images/partners/purvanchal.png', dark: true },
+        { name: 'ACE Group', logo: '/images/partners/ace.webp' },
+        { name: 'Gaurs Group', logo: '/images/partners/gaurs.png' },
+    ],
 };
 
 // Main menu. Links starting with "/#" scroll to a section on the home page;
